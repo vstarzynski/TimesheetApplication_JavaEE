@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+   <h:head>
+      <title>#{msgs.title}</title>
+   </h:head>
+   <h:body>
+      <h:form>
+         <h3>#{msgs.logInText}</h3>   
+         <table>
+            <tr>
+               <td>#{msgs.userNameColumn}</td>
+               <td><h:inputText value="#{loginBean.user}"/></td>
+            </tr>
+            <tr>
+               <td>#{msgs.pass}</td>
+               <td><h:inputSecret value="#{loginBean.password}"/></td>
+            </tr>
+         </table>
+         <p><h:commandButton value="#{msgs.BtnLogin}" action="#{loginBean.checkUser}"/></p>
+         <p><h:commandButton value="#{msgs.BtnAdmin}" action="#{loginBean.checkAdmin}"/></p>
+      </h:form>     
+   </h:body>
+   
+</html>

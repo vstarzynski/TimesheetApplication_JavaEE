@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+   <h:head>
+      <title>#{msgs.title}</title>
+   </h:head>
+   
+   <body> 
+   		<h:form>
+   		
+   			<h:panelGroup layout="block">
+				<h:panelGrid columns="2">
+					<h:outputFormat style="font-style: italic" value="#{msgs.nameColumn}:"/> <h:inputText disabled="true" size="10" value="#{timesheetBean.lgUser.loggedUser.name}"/>
+					<h:outputFormat style="font-style: italic" value="#{msgs.empNumTxt}:"/> <h:inputText disabled="true" size="10" maxlength="10" value="#{timesheetBean.lgUser.loggedUser.empNumber}"/>
+				</h:panelGrid>
+			</h:panelGroup>	
+			
+			<br/>
+			#{msgs.breakLine}
+			<br/>
+			<br/>
+				
+			<h:dataTable value="#{timesheetBean.userTimesheets}" var="timesheets">
+	            <h:column style="text-align: center;">
+	               <f:facet name="header">
+	                  <h:outputText value="#{msgs.wkNumColumn}" 
+	                                style="font-weight: bold"/>
+	               </f:facet>
+	               <h:outputText value="#{timesheets.weekNumber}" rendered="true" size="10"/>
+	            </h:column >
+	            <h:column>
+	               <f:facet name="header">
+	                  <h:outputText value="" 
+	                                style="font-weight: bold"/>
+	               </f:facet>
+	               
+	               <h:commandButton value="#{msgs.openBtn}" action="#{timesheetBean.openTimesheet}">
+	               	<f:param name="id" value="#{timesheets.weekNumber}"/>
+	               </h:commandButton>
+	            </h:column>
+      		</h:dataTable>
+
+	   		<p><h:commandButton value="#{msgs.backButton}" action="login"/></p>
+	   		<p><h:commandButton value="#{msgs.addTSBtn}" action="#{timesheetBean.addTimesheet}"/></p>
+	   		
+   		</h:form>
+   </body>
+</html>

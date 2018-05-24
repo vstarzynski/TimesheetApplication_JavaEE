@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+   <h:head>
+      <title>#{msgs.title}</title>
+   </h:head>
+   <body>
+   		<h3>#{msgs.addUserText}</h3> 
+   		<p>
+	   		#{msgs.addUserSpecifications1}<br/>
+	   		#{msgs.addUserSpecifications2}
+   		</p>
+		<h:form>
+			<table>
+	            <tr>
+	               <td>#{msgs.name}</td>
+	               <td><h:inputText value="#{addUserBean.newName}"/></td>
+	            </tr>
+	            <tr>
+	               <td>#{msgs.idColumn}</td>
+	               <td><h:inputText value="#{addUserBean.id}"/></td>
+	            </tr>
+	            <tr>
+	               <td>#{msgs.userNameColumn}</td>
+	               <td><h:inputText value="#{addUserBean.newUserName}"/></td>
+	            </tr>
+	            <tr>
+	               <td>#{msgs.pass}</td>
+	               <td><h:inputSecret value="#{addUserBean.password}"/></td>
+	            </tr>
+	            <tr>
+	               <td>#{msgs.checkPass}</td>
+	               <td><h:inputSecret value="#{addUserBean.checkPass}"/></td>
+	            </tr>
+	            <tr>
+	            		<td>#{msgs.adminColumn}</td>
+	            		<td><h:selectBooleanCheckbox value="#{addUserBean.admin}"/></td>
+	            </tr>
+         </table>
+		 
+		 <p><h:commandButton value="#{msgs.addUserBtn}" action="#{addUserBean.addUser}"/></p> 
+		 <p><h:commandButton value="#{msgs.backButton}" action="admin"/></p> 
+		
+		</h:form>
+   
+  	  
+   </body>
+</html>

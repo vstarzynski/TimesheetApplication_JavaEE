@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<h:head>
+      <title>#{msgs.title}</title>
+   </h:head>
+   
+   <body> 	
+   	<h:form>
+   		<h:panelGroup layout="block">
+			<h:panelGrid columns="2">
+				<h:outputFormat style="font-style: italic" value="#{msgs.nameColumn}:"/> <h:inputText disabled="true" size="11" value="#{timesheetBean.lgUser.loggedUser.name}"/>
+				<h:outputFormat style="font-style: italic" value="#{msgs.empNumTxt}:"/> <h:inputText disabled="true" size="11" maxlength="10" value="#{timesheetBean.lgUser.loggedUser.empNumber}"/>
+				<h:outputFormat style="font-style: italic" value="#{msgs.weekText}:"/> <h:inputText disabled="true" size="11" maxlength="10" value="#{timesheetBean.selectedTimesheet.weekNumber}"/>
+				<h:outputFormat style="font-style: italic" value="#{msgs.weekEnding}:"/> <h:inputText disabled="true" size="11" maxlength="10" value="#{timesheetBean.selectedTimesheet.endWeek}"/>
+			</h:panelGrid>
+		</h:panelGroup>	
+   	
+   	<h:dataTable value="#{timesheetBean.selectedTimesheet.customDetails}" var="row">
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="#{msgs.projectColumn}" style="font-weight: bold"/>
+			</f:facet>
+			<h:inputText value="#{row.projectID}" rendered="true" size="5"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="#{msgs.wpColumn}" style="font-weight: bold"/>
+			</f:facet>
+			<h:inputText value="#{row.workPackage}" rendered="true" size="5"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="#{msgs.totalColumn}" style="font-weight: bold"/>
+			</f:facet>
+			<h:outputText value="#{row.totalHours}" rendered="true" size="5"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="#{msgs.satColumn}" style="font-weight: bold"/>
+			</f:facet>
+			<h:inputText value="#{row.saturdayHours}" rendered="true" size="5"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="#{msgs.sunColumn}" style="font-weight: bold"/>
+			</f:facet>
+			<h:inputText value="#{row.sundayHours}" rendered="true" size="5"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="#{msgs.monColumns}" style="font-weight: bold"/>
+			</f:facet>
+			<h:inputText value="#{row.mondayHours}" rendered="true" size="5"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="#{msgs.tueColumn}" style="font-weight: bold"/>
+			</f:facet>
+			<h:inputText value="#{row.tuesdayHours}" rendered="true" size="5"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="#{msgs.wedColumn}" style="font-weight: bold"/>
+			</f:facet>
+			<h:inputText value="#{row.wednesdayHours}" rendered="true" size="5"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="#{msgs.thuColumn}" style="font-weight: bold"/>
+			</f:facet>
+			<h:inputText value="#{row.thursdayHours}" rendered="true" size="5"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="#{msgs.friColumn}" style="font-weight: bold"/>
+			</f:facet>
+			<h:inputText value="#{row.fridayHours}" rendered="true" size="5"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="#{msgs.notesColumn}" style="font-weight: bold"/>
+			</f:facet>
+			<h:inputText value="#{row.notes}" rendered="true" size="20"/>
+		</h:column>
+    </h:dataTable>
+   	
+   	<p><h:commandButton value="#{msgs.saveBtn}" action="timesheetdetail"/></p>
+   	<p><h:commandButton value="#{msgs.addRowBtn}" action="#{timesheetBean.selectedTimesheet.addRow}"/></p>   
+   	<p><h:commandButton value="#{msgs.backButton}" action="timesheet"/></p>	
+   	</h:form>
+   	
+   	
+   </body>
+   
+   
+</html>

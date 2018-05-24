@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+   <h:head>
+      <title>#{msgs.title}</title>
+   </h:head>
+   <body>
+   		<h:form>
+	   		<h3>#{msgs.adminText}</h3>   
+	   		   		
+	   		<h:dataTable value="#{adminBean.userList}" var="users">
+            <h:column>
+               <f:facet name="header">
+                  <h:outputText value="#{msgs.editColumn}" 
+                                style="font-weight: bold"/>
+               </f:facet>
+               <h:selectBooleanCheckbox value="#{users.editable}" onclick="submit()"/>
+            </h:column>
+            <h:column>
+               <f:facet name="header">
+                  <h:outputText value="#{msgs.userNameColumn}" 
+                                style="font-weight: bold"/>
+               </f:facet>
+               <h:inputText value="#{users.userName}" rendered="#{users.editable}" size="11"/>
+               <h:inputText value="#{users.userName}" disabled="true"  size="11" rendered="#{not users.editable}"/>
+            </h:column>
+            <h:column>
+               <f:facet name="header">
+                  <h:outputText value="#{msgs.nameColumn}" 
+                                style="font-weight: bold"/>
+               </f:facet>
+               <h:inputText value="#{users.name}" rendered="#{users.editable}" size="11"/>
+               <h:inputText value="#{users.name}" disabled="true"  size="11" rendered="#{not users.editable}"/>
+            </h:column>
+            <h:column>
+               <f:facet name="header">
+                  <h:outputText value="#{msgs.idColumn}" 
+                                style="font-weight: bold"/>
+               </f:facet>
+               <h:inputText value="#{users.empNumber}" rendered="#{users.editable}" size="11"/>
+               <h:inputText value="#{users.empNumber}" disabled="true"  size="11" rendered="#{not users.editable}"/>
+            </h:column>
+            <h:column>
+               <f:facet name="header">
+                  <h:outputText value="#{msgs.passColumn}" 
+                                style="font-weight: bold"/>
+               </f:facet>
+               <h:inputText value="#{users.credentials.password}" rendered="#{users.editable}" size="11"/>
+               <h:inputText value="#{users.credentials.password}" disabled="true"  size="11" rendered="#{not users.editable}"/>
+            </h:column>
+            <h:column>
+               <f:facet name="header">
+                  <h:outputText value="#{msgs.adminColumn}" 
+                                style="font-weight: bold"/>
+               </f:facet>
+               <h:selectBooleanCheckbox value="#{users.admin}" onclick="submit()" rendered="#{users.editable}"/>
+               <h:inputText value="#{users.admin}" disabled="true"  size="11" rendered="#{not users.editable}"/>
+            </h:column>
+         </h:dataTable>
+
+        <p><h:commandButton value="#{msgs.saveChangesBtn}" action="#{adminBean.save}"/></p>
+		<p><h:commandButton value="#{msgs.addUserBtn}" action="#{adminBean.addUser}"/></p>
+	   	<p><h:commandButton value="#{msgs.removeUserBtn}" action="#{adminBean.removeUser}"/></p>
+        <p><h:commandButton value="#{msgs.backButton}" action="login"/></p>  
+   		</h:form>
+   </body>
+   
+</html>
